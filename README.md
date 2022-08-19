@@ -29,3 +29,6 @@ server01 | SUCCESS => {
 
 # Retire lab
 ./retire.sh
+
+# Credentials
+https://github.com/ansible/test-playbooks 

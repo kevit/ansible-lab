@@ -1,0 +1,14 @@
+---
+#ansible-playbook -i inventory.ini labs/required_vars.yml -e var1=true -e var2=false
+
+- hosts: all
+  vars:
+    required_vars:
+      - var1
+      - var2
+  tasks:
+    - name: "Check required variables"
+      fail: msg="Variable '{{ item }}' is not defined"
+      when: item not in vars
+      loop: "{{required_vars}}"
+

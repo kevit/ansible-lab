@@ -1,0 +1,21 @@
+---
+# VARIABLE=Test ansible-playbook -i inventory.ini labs/environ_test.yml -e env_variable=VARIABLE -e env_value=Test
+
+- hosts: all
+
+  tasks:
+    - name: 'assert expected variables are defined'
+      assert:
+        that:
+            - env_variable is defined
+            - env_value is defined
+
+    - name: 'assert that the desired environment variable is defined'
+      assert:
+        that:
+            - "lookup('env','{{env_variable}}')"
+
+    - name: 'assert that the desired environment matches the expected value'
+      assert:
+        that:
+            - "lookup('env','{{env_variable}}') == '{{env_value}}'"

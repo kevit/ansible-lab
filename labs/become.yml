@@ -1,0 +1,9 @@
+---
+- hosts: all
+#ansible-playbook -i inventory.ini labs/become.yml -v
+#ansible-playbook -i inventory.ini labs/become.yml -b -v
+
+#  become: yes
+  tasks:
+    - name: Become
+      command: id
