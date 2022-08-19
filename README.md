@@ -9,6 +9,7 @@ As the result you will be logged in inside control node shell
 
 # Testing ansible setup
 
+```
 ansible -i inventory.ini all -m ping
 server02 | SUCCESS => {
     "ansible_facts": {
@@ -24,6 +25,7 @@ server01 | SUCCESS => {
     "changed": false, 
     "ping": "pong"
 }
+```
 
 # Retire lab
 ./retire.sh
