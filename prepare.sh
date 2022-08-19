@@ -2,9 +2,9 @@
 yes |ssh-keygen -f key
 chmod 600 key
 
-docker build -t ansible-centos .
+podman build -t ansible-centos .
 cd control
-docker build -t ansible-control .
+podman build -t ansible-control .
 cd ..
 podman network create ansible
 
