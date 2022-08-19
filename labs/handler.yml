@@ -1,0 +1,18 @@
+---
+#ansible-playbook -i inventory.ini labs/handler.yml  -e notify=false
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: task with status "changed"
+      command: /bin/true
+    - name: task with status "changed" and handler
+      command: /bin/true
+      notify: handler
+      when: notify 
+    - name: task with status "changed" ignored via changed_when
+      command: /bin/true
+      changed_when: false
+      notify: handler
+  handlers:
+    - name: handler
+      command: /bin/true
